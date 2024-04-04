@@ -6,29 +6,31 @@
     include '../../../models/Category.php';
 
     $category = new Category();
+    $data = $category->getById($_GET['id']);
 
     $errors = [];
 
-    if(isset($_POST['submit'])) {
-
+    if(isset($_POST['update'])) {
         $description = $_POST['description'];
+        $id = $_POST['id'];
 
         if($description === "") {
             array_push($errors,"Description is required field");
         }
 
-        
         if(validateString($description)) {
             array_push($errors,"Description cannot accept special characters");
         }
-        
-        if($category->checkIfCategoryAlreadyExists($description)) {
-            array_push($errors,"Category is already exists");
-        }
-        
-        if(empty($errors)) {
 
-            $result = $category->create(['description' => $description]);
+        if($description !== $data->description) {
+            if($category->checkIfCategoryAlreadyExists($description)) {
+                array_push($errors,"Category is already exists");
+            }
+        } 
+
+        if(empty($errors)) {
+            $values = ['description' => $description];
+            $result = $category->update($id,$values);
 
             if($result) {
                 header('Location: /abc/dashboard/settings/categories/list.php');
@@ -58,20 +60,22 @@
             <?php endforeach; ?>
         <?php endif; ?>
 
-        <h2>Add Location</h2>
+        <h2>Edit Category</h2>
         <br>
 
-        <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-
+        <form action="<?= $_SERVER['PHP_SELF']; ?>?id=<?= $data->id ?>" method="POST">
+            
+            <input type="hidden" name="id" value="<?= $data->id ?>">
+                
             <div class="field d-flex flex-col gap-3 mt-12">
-                    <label>Category</label>
-                    <input type="text" class="text-input" placeholder="Category" name="description">
+                    <label>Description</label>
+                    <input type="text" class="text-input" placeholder="Category" name="description" value="<?= $data->description ?>">
             </div>
 
             <br/>
 
             <div class="mt-12">
-                <button type="submit" class="btn btn-dark" name="submit">Submit</button>
+                <button type="submit" class="btn btn-dark" name="update">Update</button>
             </div>
 
         </form>

@@ -1,5 +1,4 @@
 <?php 
-    include '../../func/helper.php';
     include '../../models/Category.php';
     include '../../models/Material.php';
 
@@ -9,48 +8,6 @@
     $data = $material->getById($_GET['id']);
 
     $categories = $category->fetchAll();
-
-    $errors = [];
-
-    if(isset($_POST['update'])) {
-        $barcode = $_POST['barcode'];
-        $description = $_POST['description'];
-        $category_id = $_POST['category_id'];
-        
-        if($barcode === "") {
-            array_push($errors,"Barcode is required field");
-        }
-
-        if($data->barcode !== $barcode) {
-            if($material->checkIfBarcodeAlreadyExists($barcode)) {
-                array_push($errors,"The barcode is already exists");
-            }
-        }
-
-        if($description === "") {
-            array_push($errors,"Description is required field");
-        }
-
-        if(validateString($description)) {
-            array_push($errors,"Description cannot accept special characters");
-        }
-
-        if(empty($errors)) {
-
-            $values = [
-                'barcode' => $barcode,
-                'description' => $description,
-                'category_id' => $category_id
-            ];
-
-            $result = $material->update($data->id,$values);
-
-            if($result) {
-                header('Location: /abc/dashboard/materials/list.php');
-            }
-        }
-    }
-
 ?>
 
 
@@ -63,8 +20,9 @@
     
     <div class="container"> <!-- container -->
 
-        <?php if(count($errors) > 0): ?>
-            <?php foreach($errors as $error): ?>
+        <?php if(isset($_GET['errors'])): ?>
+            <?php $unserializedErrors = unserialize($_GET['errors']); ?>
+            <?php foreach($unserializedErrors as $error): ?>
                 <div class="error-container">
                     <p><?= $error ?></p>
                 </div>
@@ -74,7 +32,9 @@
         <h2>Edit Material</h2>
         <br>
 
-        <form action="<?= $_SERVER['PHP_SELF']; ?>?id=<?= $data->id ?>" method="POST">
+        <form action="/abc/controllers/material-controller.php?id=<?= $data->id ?>" method="POST">
+            
+            <input type="hidden" value="<?= $data->id ?>" name="id">
 
             <div class="field d-flex flex-col gap-3">
                     <label>Barcode</label>

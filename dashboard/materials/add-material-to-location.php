@@ -1,63 +1,24 @@
 <?php 
-    include '../../func/helper.php';
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    
+
     include '../../models/Material.php';
     include '../../models/Location.php';
     include '../../models/Availability.php';
     include '../../models/MaterialLocationStatus.php';
-    include '../../models/MaterialLocation.php';
 
 
     $material = new Material();
     $location = new Location();
     $availability = new Availability();
     $materialLocationStatus = new MaterialLocationStatus();
-    $materialLocation = new MaterialLocation();
 
     $locations = $location->fetchAll();
     $availabilities = $availability->fetchAll();
     $status = $materialLocationStatus->fetchAll();
 
     $data = $material->getById($_GET['id']);
-
-
-
-    $errors = [];
-
-    if(isset($_POST['submit'])) {
-        echo print_r($_POST);
-        
-        $materialId = $_POST['material_id'];
-        $price = $_POST['price'];
-        $locationId = $_POST['location_id'];
-        $availabilityId = $_POST['availability_id'];
-        $materialLocationStatuId = $_POST['material_location_status_id'];
-        
-        if($price <=  0) {
-            array_push($errors,"Price must be greater than 0");
-        }
-
-        if($materialLocation->checkIfMaterialLocationAlreadyExists($materialId,$locationId) > 0) {
-            array_push($errors,"Material with the same location is already exists");
-        }
-
-
-        if(empty($errors)) {
-
-            $values = [
-                'material_id' => $materialId,
-                'price' => $price,
-                'location_id' => $locationId,
-                'availability_id' => $availabilityId,
-                'material_location_status_id' => $materialLocationStatuId
-            ];
-
-            $result = $materialLocation->create($values);
-
-            if($result) {
-                header("Location: /abc/dashboard/materials/material-location.php?id={$data->id}");
-            }
-        }
-    }
 
 ?>
 
@@ -71,8 +32,9 @@
     
     <div class="container"> <!-- container -->
 
-        <?php if(count($errors) > 0): ?>
-            <?php foreach($errors as $error): ?>
+        <?php if(isset($_GET['errors'])): ?>
+            <?php $unserializedErrors = unserialize($_GET['errors']); ?>
+            <?php foreach($unserializedErrors as $error): ?>
                 <div class="error-container">
                     <p><?= $error ?></p>
                 </div>
@@ -82,13 +44,13 @@
         <h2>Add Location [<?= $data->description ?>]</h2>
         <br>
 
-        <form action="<?= $_SERVER['PHP_SELF']; ?>?id=<?= $data->id ?>" method="POST">
+        <form action="/abc/controllers/material-location-controller.php" method="POST">
             
             <input type="hidden" name="material_id" value="<?= $data->id ?>" />
 
             <div class="field d-flex flex-col gap-3">
                     <label>Price</label>
-                    <input type="number" class="text-input" placeholder="Price" name="price">
+                    <input type="number" class="text-input" placeholder="Price" name="price" value="0">
             </div>
 
             <div class="field d-flex flex-col gap-3 mt-12">

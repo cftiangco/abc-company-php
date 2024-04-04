@@ -9,11 +9,5 @@
         <li>
             <a class="li-none" href="#">Settings</a>
         </li>
-        <li>
-            <a class="li-none" href="#">Users</a>
-        </li>
-        <li>
-            <a class="li-none" href="#">Logout</a>
-        </li>
     </ul>
 </div>

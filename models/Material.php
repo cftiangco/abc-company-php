@@ -20,4 +20,9 @@ class Material extends Main {
         INNER JOIN categories ON materials.category_id = categories.id;")->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function fetchOneWithCategory($id) {
+        return $this->db->query("SELECT materials.*, categories.description as category FROM materials
+        INNER JOIN categories ON materials.category_id = categories.id WHERE materials.id = '{$id}';")->fetch(PDO::FETCH_OBJ);
+    }
+
 }

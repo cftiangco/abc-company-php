@@ -81,6 +81,10 @@ html, body, * {
     text-decoration: none!important;
 }
 
+.text-dark {
+    color: var(--black);
+}
+
 .box .box-content {
     display: flex;
     align-items: center;
@@ -102,6 +106,18 @@ html, body, * {
     display: flex;
 }
 
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
 .flex-col {
     flex-direction: column;
 }
@@ -120,6 +136,14 @@ html, body, * {
 
 .mt-12 {
     margin-top: 12px;
+}
+
+.hidden {
+    display: none!important;
+}
+
+.block {
+    display: block!important;
 }
 
 .text-input {
@@ -181,4 +205,54 @@ html, body, * {
 .table-bordered > th, td {
     padding:8px;
     text-align: center;
+}
+
+.key-value {
+    width:100%;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px;
+    margin-top: 5px;
+}
+
+.action-button {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    outline:none;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--black);
+    padding:5px 10px;
+    font-size: 16px;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    height:100%;
+    width:100%;
+    position: fixed;
+    z-index: 10;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+}
+
+.modal .modal-container {
+    height: 100%;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .modal-container .modal-content{
+    z-index: 30;
+    min-width: 200px;
+    min-height: 200px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
 }

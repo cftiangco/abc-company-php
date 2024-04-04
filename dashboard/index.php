@@ -14,7 +14,7 @@
     
     <div class="container"> <!-- container -->
 
-        <h1>Dashboard</h1>
+        <h1 class="text-dark">Dashboard</h1>
     
     </div> <!-- end container -->
     

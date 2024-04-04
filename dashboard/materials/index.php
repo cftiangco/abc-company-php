@@ -13,7 +13,7 @@
     <?php include '../../partials/sidebar.php'; ?>
     
     <div class="container"> <!-- container -->
-        <h1>Manage Materials</h1>
+        <h1 class="text-dark">Manage Materials</h1>
         <br>
 
         <div class="flex">

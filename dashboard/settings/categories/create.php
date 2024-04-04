@@ -1,43 +1,6 @@
 <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-
-    include '../../../func/helper.php';
-    include '../../../models/Category.php';
-
-    $category = new Category();
-
-    $errors = [];
-
-    if(isset($_POST['submit'])) {
-
-        $description = $_POST['description'];
-
-        if($description === "") {
-            array_push($errors,"Description is required field");
-        }
-
-        
-        if(validateString($description)) {
-            array_push($errors,"Description cannot accept special characters");
-        }
-        
-        if($category->checkIfCategoryAlreadyExists($description)) {
-            array_push($errors,"Category is already exists");
-        }
-        
-        if(empty($errors)) {
-
-            $result = $category->create(['description' => $description]);
-
-            if($result) {
-                header('Location: /abc/dashboard/settings/categories/list.php');
-            }
-        }
-
-
-    }
-
 ?>
 
 
@@ -50,18 +13,19 @@
     
     <div class="container"> <!-- container -->
 
-        <?php if(count($errors) > 0): ?>
-            <?php foreach($errors as $error): ?>
+        <?php if(isset($_GET['errors'])): ?>
+            <?php $unserializedErrors = unserialize($_GET['errors']); ?>
+            <?php foreach($unserializedErrors as $error): ?>
                 <div class="error-container">
                     <p><?= $error ?></p>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
 
-        <h2>Add Location</h2>
+        <h2>Add Category</h2>
         <br>
 
-        <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="/abc/controllers/category-controller.php" method="POST">
 
             <div class="field d-flex flex-col gap-3 mt-12">
                     <label>Category</label>

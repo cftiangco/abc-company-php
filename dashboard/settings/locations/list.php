@@ -1,8 +1,6 @@
 <?php 
     include '../../../models/Location.php';
     $location = new Location();
-
-
 ?>
 
 

@@ -95,6 +95,7 @@ html, body, * {
     box-shadow: 2px 3px 8px #eee;
     background-color: var(--white);
     border-radius: 10px;
+    border:1px solid #aaa;
 }
 
 .box .box-content span {

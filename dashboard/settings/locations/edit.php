@@ -1,46 +1,10 @@
 <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-
-    include '../../../func/helper.php';
+    
     include '../../../models/Location.php';
-
     $location = new Location();
     $data = $location->getById($_GET['id']);
-
-    $errors = [];
-
-    if(isset($_POST['update'])) {
-        print_r($_POST);
-        $description = $_POST['description'];
-        $id = $_POST['id'];
-
-        if($description === "") {
-            array_push($errors,"Description is required field");
-        }
-
-        if(validateString($description)) {
-            array_push($errors,"Description cannot accept special characters");
-        }
-
-        if($description !== $data->description) {
-            if($location->checkIfLocationAlreadyExists($description)) {
-                array_push($errors,"Location is already exists");
-            }
-        } 
-
-        if(empty($errors)) {
-            $values = ['description' => $description];
-            $result = $location->update($id,$values);
-
-            if($result) {
-                header('Location: /abc/dashboard/settings/locations/list.php');
-            }
-        }
-
-
-    }
-
 ?>
 
 
@@ -53,8 +17,9 @@
     
     <div class="container"> <!-- container -->
 
-        <?php if(count($errors) > 0): ?>
-            <?php foreach($errors as $error): ?>
+        <?php if(isset($_GET['errors'])): ?>
+            <?php $unserializedErrors = unserialize($_GET['errors']); ?>
+            <?php foreach($unserializedErrors as $error): ?>
                 <div class="error-container">
                     <p><?= $error ?></p>
                 </div>
@@ -64,7 +29,7 @@
         <h2>Edit Location</h2>
         <br>
 
-        <form action="<?= $_SERVER['PHP_SELF']; ?>?id=<?= $data->id ?>" method="POST">
+        <form action="/abc/controllers/location-controller.php?id=<?= $data->id ?>" method="POST">
             
             <input type="hidden" name="id" value="<?= $data->id ?>">
                 

@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 require_once('Main.php');
 
-class Categories extends Main { 
+class Category extends Main { 
     public $table = "categories";
 
     public function __construct() {

@@ -11,4 +11,8 @@ class Location extends Main {
         parent::__construct();
     }
 
+    public function checkIfLocationAlreadyExists($description) {
+        return $this->db->query("SELECT COUNT(*) FROM locations WHERE description = '{$description}' ")->fetchColumn();
+    }
+
 }

@@ -1,9 +1,9 @@
 <?php 
     include '../../func/helper.php';
-    include '../../models/Categories.php';
+    include '../../models/Category.php';
     include '../../models/Material.php';
 
-    $category = new Categories();
+    $category = new Category();
     $material = new Material();
 
     $data = $material->getById($_GET['id']);

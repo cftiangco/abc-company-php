@@ -1,9 +1,9 @@
 <?php 
     include '../../func/helper.php';
-    include '../../models/Categories.php';
+    include '../../models/Category.php';
     include '../../models/Material.php';
 
-    $category = new Categories();
+    $category = new Category();
     $material = new Material();
 
     $categories = $category->fetchAll();
@@ -86,7 +86,7 @@
 
             <div class="field d-flex flex-col gap-3 mt-12">
                     <label>Description</label>
-                    <input type="text" class="text-input" placeholder="Barcode" name="description">
+                    <input type="text" class="text-input" placeholder="Description" name="description">
             </div>
 
             <div class="field d-flex flex-col gap-3 mt-12">

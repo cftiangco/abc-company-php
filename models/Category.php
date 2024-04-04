@@ -11,4 +11,8 @@ class Category extends Main {
         parent::__construct();
     }
 
+    public function checkIfLocationAlreadyExists($description) {
+        return $this->db->query("SELECT COUNT(*) FROM categories WHERE description = '{$description}' ")->fetchColumn();
+    }
+
 }

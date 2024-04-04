@@ -44,12 +44,6 @@
 <?php include '../../../partials/header.php'; ?>
 
 
-<header class="header"> 
-    <div>
-        <h1>ABC Company</h1>
-    </div>
-</header>
-
 
 <div class="main">
 

@@ -3,9 +3,9 @@
     ini_set('display_errors', 1);
 
     include '../../../func/helper.php';
-    include '../../../models/Location.php';
+    include '../../../models/Category.php';
 
-    $location = new Location();
+    $category = new Category();
 
     $errors = [];
 
@@ -22,16 +22,16 @@
             array_push($errors,"Description cannot accept special characters");
         }
         
-        if($location->checkIfLocationAlreadyExists($description)) {
-            array_push($errors,"Location is already exists");
+        if($category->checkIfLocationAlreadyExists($description)) {
+            array_push($errors,"Category is already exists");
         }
         
         if(empty($errors)) {
 
-            $result = $location->create(['description' => $description]);
+            $result = $category->create(['description' => $description]);
 
             if($result) {
-                header('Location: /abc/dashboard/settings/locations/list.php');
+                header('Location: /abc/dashboard/settings/categories/list.php');
             }
         }
 
@@ -42,13 +42,6 @@
 
 
 <?php include '../../../partials/header.php'; ?>
-
-
-<header class="header"> 
-    <div>
-        <h1>ABC Company</h1>
-    </div>
-</header>
 
 
 <div class="main">
@@ -71,8 +64,8 @@
         <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
 
             <div class="field d-flex flex-col gap-3 mt-12">
-                    <label>Description</label>
-                    <input type="text" class="text-input" placeholder="Location" name="description">
+                    <label>Category</label>
+                    <input type="text" class="text-input" placeholder="Category" name="description">
             </div>
 
             <br/>

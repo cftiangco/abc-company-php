@@ -7,3 +7,9 @@
     <link rel="stylesheet" href="/abc/assets/css/styles.css">
 </head>
 <body>
+
+<header class="header"> 
+    <div>
+        <h1>ABC Company</h1>
+    </div>
+</header>

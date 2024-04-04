@@ -1,0 +1,41 @@
+<?php include '../../partials/header.php'; ?>
+
+
+<header class="header"> 
+    <div>
+        <h1>ABC Company</h1>
+    </div>
+</header>
+
+
+<div class="main">
+
+    <?php include '../../partials/sidebar.php'; ?>
+    
+    <div class="container"> <!-- container -->
+        <h1>Manage Materials</h1>
+        <br>
+
+        <div class="flex">
+            <div class="box">
+                <a href="/abc/dashboard/materials/list.php" class="li-none">
+                    <div class="box-content">
+                        <span>Materials</span>
+                    </div>
+                </a>
+            </div>
+            <div class="box">
+                <a href="/abc/dashboard/materials/create.php" class="li-none">
+                    <div class="box-content">
+                        <span>Add Material</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+    
+</div>
+
+
+<?php include '../../partials/footer.php'; ?>

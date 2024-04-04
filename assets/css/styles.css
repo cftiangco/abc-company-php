@@ -1,3 +1,184 @@
-body {
-    /* background-color: red; */
+:root {
+    --black: #28282B;
+    --white: #ffffff;
+}
+
+html, body, * {
+    padding:0;
+    margin:0;
+}
+
+
+.header {
+    background-color: var(--black);
+    width:100%;
+    height:80px;
+}
+
+.header div {
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.header div h1 {
+    color:var(--white);
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.main {
+    display: flex;
+    height:100vh;
+}
+
+.main .sidebar {
+    height:100%;
+    width:200px;
+    border-left: 1px solid var(--black);
+}
+
+.main .sidebar {
+    height:100%;
+    width:200px;
+    border-right: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main .sidebar ul {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main .sidebar ul li {
+    list-style: none;
+}
+
+.container {
+    width:100%;
+    height:100vh;
+    padding:30px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.box {
+    height:100px;
+    width:200px;
+}
+
+.li-none {
+    text-decoration: none!important;
+}
+
+.box .box-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    box-shadow: 2px 3px 8px #eee;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.box .box-content span {
+    color:var(--black);
+    font-weight: bold;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.field {
+    display: fle;
+}
+
+.gap-3 {
+    gap: 8px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}
+
+.text-input {
+    width: 30%;
+    padding:5px 3px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.select-input {
+    width: 30%;
+    padding:5px 3px;
+    height: 35px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.btn {
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    outline:none;
+    border-radius: 10px;
+}
+
+.btn-dark {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.error-container {
+    margin-bottom: 12px;
+}
+
+.error-container p {
+    color: red;
+}
+
+.table-container {
+    width:100%;
+}
+
+.table-container .table-bordered {
+    width:100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table-bordered, th, td {
+    border:1px solid black;
+}
+
+.table-bordered > th, td {
+    padding:8px;
+    text-align: center;
 }

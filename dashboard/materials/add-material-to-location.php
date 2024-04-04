@@ -6,6 +6,7 @@
     include '../../models/MaterialLocationStatus.php';
     include '../../models/MaterialLocation.php';
 
+
     $material = new Material();
     $location = new Location();
     $availability = new Availability();
@@ -17,7 +18,7 @@
     $status = $materialLocationStatus->fetchAll();
 
     $data = $material->getById($_GET['id']);
-    $materialLocationData = $materialLocation->fetchAllByMaterialId($_GET['id']);
+
 
 
     $errors = [];
@@ -33,6 +34,10 @@
         
         if($price <=  0) {
             array_push($errors,"Price must be greater than 0");
+        }
+
+        if($materialLocation->checkIfMaterialLocationAlreadyExists($materialId,$locationId) > 0) {
+            array_push($errors,"Material with the same location is already exists");
         }
 
 
@@ -81,7 +86,7 @@
             <?php endforeach; ?>
         <?php endif; ?>
 
-        <h2>Add Location To: <?= $data->description ?></h2>
+        <h2>Add Location [<?= $data->description ?>]</h2>
         <br>
 
         <form action="<?= $_SERVER['PHP_SELF']; ?>?id=<?= $data->id ?>" method="POST">

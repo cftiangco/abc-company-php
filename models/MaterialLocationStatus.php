@@ -11,8 +11,4 @@ class MaterialLocationStatus extends Main {
         parent::__construct();
     }
 
-    public function checkIfMaterialLocationAlreadyExists($materialId,$locationId) {
-        return $this->db->query("SELECT COUNT(*) FROM material_location WHERE material_id = $materialId AND location_id = $locationId")->fetchColumn();
-    }
-
 }

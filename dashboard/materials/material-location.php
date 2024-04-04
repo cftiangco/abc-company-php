@@ -74,7 +74,7 @@
                             <td><?= $row->availability ?></td>
                             <td><?= $row->status ?></td>
                             <td>
-                                <a href="/abc/dashboard/materials/edit-material-to-location.php?id=<?=$row->id?>" class="li-none">Edit</a>
+                                <a href="/abc/dashboard/materials/edit-material-to-location.php?material_id=<?=$data->id?>&material_location_id=<?= $row->id ?>" class="li-none">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

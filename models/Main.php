@@ -75,22 +75,5 @@ class Main
             echo 'Error: ' . $e->getMessage();
         }
     }
-
-    public function deleteById($id) {
-        try {
-            $this->db->query("DELETE FROM $this->table WHERE id = $id")->fetch(PDO::FETCH_OBJ);
-            return $id;
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-    }
-
-    public function total() {
-        try {
-            return $this->db->query("SELECT COUNT(*) FROM $this->table ")->fetchColumn();
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-    }
     
 }

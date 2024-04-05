@@ -15,7 +15,7 @@
     
     <div class="container"> <!-- container -->
 
-        <h2>Location List</h2>
+        <h2>Categories List</h2>
 
         <div class="table-container">
             <table class="table-bordered">

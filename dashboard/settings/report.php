@@ -3,13 +3,14 @@
     ini_set('display_errors', 1);
     
     include '../../models/MaterialLocationStatus.php';
+    include '../../models/Location.php';
     include '../../models/Material.php';
 
     $material = new Material();
+    $location = new Location();
     $materials = $material->fetchAll();
 
     $materialLocationStatus = new MaterialLocationStatus();
-    $status = $materialLocationStatus->fetchAll();
 ?>
 
 
@@ -29,18 +30,19 @@
 
             <input type="hidden" name="material_id" id="material_id">
 
-            <div class="field d-flex flex-col gap-3">
-                    <label>Material</label>
-                    <div class="flex items-center">
-                        <input type="text" class="text-input" placeholder="Material" name="material" id="material" readonly>
-                        <button type="button" class="action-button" id="btn-lookup">Look up</p>
-                    </div>
+            <div class="field d-flex flex-col gap-3 mt-12">
+                    <label>Location</label>
+                    <select class="select-input" name="location_id" id="location_id">
+                        <?php foreach($location->fetchAll() as $row): ?>
+                            <option value="<?= $row->id?>"><?= $row->description ?></option>
+                        <?php endforeach; ?>
+                    </select>
             </div>
 
             <div class="field d-flex flex-col gap-3 mt-12">
                     <label>Status</label>
                     <select class="select-input" name="material_location_status_id" id="material_location_status_id">
-                        <?php foreach($status as $row): ?>
+                        <?php foreach($materialLocationStatus->fetchAll() as $row): ?>
                             <option value="<?= $row->id?>"><?= $row->description ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -55,48 +57,26 @@
 
         </form>
 
+        <div class="table-container">
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Material ID</th>
+                        <th>Barcode</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-data"></tbody>
+            </table>
+        </div>
+
     </div> <!-- end container -->
     
-</div>
-
-<div class="modal hidden" id="modal">
-    <div class="modal-container">
-        <div class="modal-content">
-            
-            <div class="modal-header flex justify-between items-center">
-                <h3>Materials</h3>
-                <button class="action-button" id="btn-close">Close</button>
-            </div>
-
-            <div class="modal-body">
-                <div class="table-container">
-                    <table class="table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Material ID</th>
-                                <th>Barcode</th>
-                                <th>Category</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            <?php foreach($material->fetchAllWithCategories() as $row): ?>                        
-                                <tr>
-                                    <td><?= $row->id ?></td>
-                                    <td><?= $row->barcode ?></td>
-                                    <td><?= $row->category ?></td>
-                                    <td><?= $row->description ?></td>
-                                    <td>
-                                        <button class="action-button selected" id="btn-select" data-id="<?= $row->id ?>" data-description="<?= $row->description ?>">Select</button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>    
-                        </tbody>
-                    </table>
-                </div>
-        </div>
-    </div>
 </div>
 
 
@@ -127,21 +107,42 @@
 
         $("#generate").click( async function() {
             let materialLocationStatusId = $("#material_location_status_id").val();
-            await getMaterialsWithLocation(materialLocationStatusId);
+            let locationId = $("#location_id").val();
+            
+            let results = await getMaterialsWithLocation(locationId,materialLocationStatusId);
+
+            $("#tbody-data").empty();
+
+            if(results.length > 0) {
+                results.forEach(row => {
+                    let newRow = $("<tr>");
+                    newRow.append(`<td>${row.id}</td>`);
+                    newRow.append(`<td>${row.barcode}</td>`);
+                    newRow.append(`<td>${row.category}</td>`);
+                    newRow.append(`<td>${row.description}</td>`);
+                    newRow.append(`<td>${row.price}</td>`);
+                    newRow.append(`<td>${row.location}</td>`);
+                    newRow.append(`<td>${row.status}</td>`);
+                    newRow.append(`<td>${row.availability}</td>`);
+                    $("#tbody-data").append(newRow);
+                })
+            } else {
+                console.log('no data');
+            }
 
         });
 
-        async function getMaterialsWithLocation(statusId) {
-            let url = `/abc/controllers/material-controller.php?status_id=${statusId}`;
+        async function getMaterialsWithLocation(locationId,statusId) {
+            let url = `/abc/controllers/material-controller.php?status_id=${statusId}&location_id=${locationId}`;
 
             try {
-                fetch(url).then(function (response) {
-                    return response.json();
-                }).then(function (res) {
-                    console.log(res);
-                });
-            } catch(err) {
-                console.log(err)
+                const response = await fetch(url);
+                const res = await response.json();
+                console.log(res);
+                return res;
+            } catch (err) {
+                console.log(err);
+                throw err;
             }
 
         }

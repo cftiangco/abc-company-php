@@ -101,5 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    echo json_encode($material->fetchMaterialsWithLocation($_GET['status_id']));
+    if(isset($_GET['status_id']) && isset($_GET['location_id'])) {
+        $statusId = $_GET['status_id'];
+        $locationId = $_GET['location_id'];
+        echo json_encode($material->fetchMaterialsByLocationIdAndStatusId($locationId,$statusId));
+    }
 }

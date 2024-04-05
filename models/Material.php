@@ -38,6 +38,26 @@ class Material extends Main {
         }
     }
 
+    public function fetchMaterialsByLocationIdAndStatusId($locationId,$statusId) {
+        try {
+            return $this->db->query("SELECT m.*,
+                l.description AS location,
+                c.description AS category,
+                a.description AS availability,
+                ml.price AS price,
+                mls.description as status
+                FROM materials m
+                INNER JOIN material_location ml ON m.id = ml.material_id
+                INNER JOIN locations l ON ml.location_id = l.id
+                INNER JOIN categories c ON m.category_id = c.id
+                INNER JOIN material_location_status mls ON ml.material_location_status_id = mls.id
+                INNER JOIN availability a ON ml.availability_id = a.id
+                WHERE l.id = $locationId AND mls.id = $statusId;")->fetchAll(PDO::FETCH_OBJ);
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
     public function fetchMaterialsWithLocation($statusId) {
         try {
             require_once('MaterialLocation.php');

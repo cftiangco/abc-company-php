@@ -99,3 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
             exit();
         }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    echo json_encode($material->fetchMaterialsWithLocation($_GET['status_id']));
+}

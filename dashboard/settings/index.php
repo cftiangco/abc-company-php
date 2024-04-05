@@ -42,6 +42,16 @@
                 </a>
             </div>
         </div>
+        <br>
+        <div class="flex">
+            <div class="box">
+                <a href="/abc/dashboard/settings/report.php" class="li-none">
+                    <div class="box-content">
+                        <span>Generate Report</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
     </div> <!-- end container -->
     

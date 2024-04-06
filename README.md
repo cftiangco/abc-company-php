@@ -17,4 +17,4 @@ docker run -p 8085:80 a2e
 docker run -p 8085:80 --network my-docker-network a2e
 ```
 
-Open your browser and navigate to **http://localhost:8085/dashboard/**
+Open your browser and navigate to **<a href="http://localhost:8085/dashboard/" target="_blank">http://localhost:8085/dashboard/</a>**

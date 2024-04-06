@@ -2,7 +2,7 @@
 
 Crimson Tiangco (a2e exam)
 
-## Instruction on how to run this application
+## Instruction on how to run this application using docker
 
 - Clone the application repository.
 - Edit the **models/Main.php** file to match your database credentials.

@@ -44,3 +44,8 @@ CREATE TABLE material_location (
     FOREIGN KEY (availability_id) REFERENCES availability(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
+
+INSERT INTO categories(description) VALUES ('Lights'),('Cables'),('Others');
+INSERT INTO locations(description) VALUES ('East'),('West'),('South');
+INSERT INTO availability(description) VALUES ('Available'),('Not Available');
+INSERT INTO material_location_status(description) VALUES ('Active'),('Inactive');

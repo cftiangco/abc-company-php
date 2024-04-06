@@ -10,14 +10,14 @@
 
         <div class="flex">
             <div class="box">
-                <a href="/abc/dashboard/materials/list.php" class="li-none">
+                <a href="/dashboard/materials/list.php" class="li-none">
                     <div class="box-content">
                         <span>Materials</span>
                     </div>
                 </a>
             </div>
             <div class="box">
-                <a href="/abc/dashboard/materials/create.php" class="li-none">
+                <a href="/dashboard/materials/create.php" class="li-none">
                     <div class="box-content">
                         <span>Add Material</span>
                     </div>

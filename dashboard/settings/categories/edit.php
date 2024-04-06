@@ -31,7 +31,7 @@
         <h2>Edit Category</h2>
         <br>
 
-        <form action="/abc/controllers/category-controller.php?id=<?= $data->id ?>" method="POST">
+        <form action="/controllers/category-controller.php?id=<?= $data->id ?>" method="POST">
             
             <input type="hidden" name="id" value="<?= $data->id ?>">
                 

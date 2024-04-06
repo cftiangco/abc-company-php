@@ -32,7 +32,7 @@
         <h2>Edit Material</h2>
         <br>
 
-        <form action="/abc/controllers/material-controller.php?id=<?= $data->id ?>" method="POST">
+        <form action="/controllers/material-controller.php?id=<?= $data->id ?>" method="POST">
             
             <input type="hidden" value="<?= $data->id ?>" name="id">
 

@@ -44,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $result = $materialLocation->create($values);
 
             if($result) {
-                header("Location: /abc/dashboard/materials/material-location.php?id={$materialId}");
+                header("Location: /dashboard/materials/material-location.php?id={$materialId}");
             } 
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/materials/add-material-to-location.php?id=".$materialId."&errors=".urlencode($serializedErrors));
+            header("Location: /dashboard/materials/add-material-to-location.php?id=".$materialId."&errors=".urlencode($serializedErrors));
             exit();
         }
 }
@@ -88,11 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
             $result = $materialLocation->update($id,$values);
 
             if($result) {
-                header("Location: /abc/dashboard/materials/material-location.php?id={$materialId}");
+                header("Location: /dashboard/materials/material-location.php?id={$materialId}");
             }
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/materials/edit-material-to-location.php?material_id=".$materialId. "&material_location_id=" . $id . "&errors=".urlencode($serializedErrors));
+            header("Location: /dashboard/materials/edit-material-to-location.php?material_id=".$materialId. "&material_location_id=" . $id . "&errors=".urlencode($serializedErrors));
             exit();
         }
 

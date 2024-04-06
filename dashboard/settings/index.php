@@ -11,14 +11,14 @@
 
         <div class="flex">
             <div class="box">
-                <a href="/abc/dashboard/settings/locations/list.php" class="li-none">
+                <a href="/dashboard/settings/locations/list.php" class="li-none">
                     <div class="box-content">
                         <span>Locations</span>
                     </div>
                 </a>
             </div>
             <div class="box">
-                <a href="/abc/dashboard/settings/locations/create.php" class="li-none">
+                <a href="/dashboard/settings/locations/create.php" class="li-none">
                     <div class="box-content">
                         <span>Add Location</span>
                     </div>
@@ -28,14 +28,14 @@
         <br>
         <div class="flex">
             <div class="box">
-                <a href="/abc/dashboard/settings/categories/list.php" class="li-none">
+                <a href="/dashboard/settings/categories/list.php" class="li-none">
                     <div class="box-content">
                         <span>Categories</span>
                     </div>
                 </a>
             </div>
             <div class="box">
-                <a href="/abc/dashboard/settings/categories/create.php" class="li-none">
+                <a href="/dashboard/settings/categories/create.php" class="li-none">
                     <div class="box-content">
                         <span>Add Category</span>
                     </div>
@@ -45,7 +45,7 @@
         <br>
         <div class="flex">
             <div class="box">
-                <a href="/abc/dashboard/settings/report.php" class="li-none">
+                <a href="/dashboard/settings/report.php" class="li-none">
                     <div class="box-content">
                         <span>Generate Report</span>
                     </div>

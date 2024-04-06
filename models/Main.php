@@ -5,16 +5,17 @@ ini_set('display_errors', 1);
 class Main
 {
 
-    protected $servername = "127.0.0.1";
+    protected $servername = "mysql";
     protected $username = "root";
     protected $password = "root";
     public $db;
+    protected $database = "a2e_exam";
     public $table = "";
 
     public function __construct()
     {
         try {
-            $this->db = new PDO("mysql:host=$this->servername;dbname=abc_php", $this->username, $this->password);
+            $this->db = new PDO("mysql:host=$this->servername;dbname=$this->database", $this->username, $this->password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();

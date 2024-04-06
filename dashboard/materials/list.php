@@ -36,8 +36,8 @@
                             <td><?= $row->category ?></td>
                             <td><?= $row->description ?></td>
                             <td>
-                                <a href="/abc/dashboard/materials/edit.php?id=<?= $row->id ?>" class="li-none">Edit</a>
-                                <a href="/abc/dashboard/materials/material-location.php?id=<?= $row->id ?>" class="li-none">Locations</a>
+                                <a href="/dashboard/materials/edit.php?id=<?= $row->id ?>" class="li-none">Edit</a>
+                                <a href="/dashboard/materials/material-location.php?id=<?= $row->id ?>" class="li-none">Locations</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

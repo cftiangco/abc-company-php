@@ -133,7 +133,7 @@
         });
 
         async function getMaterialsWithLocation(locationId,statusId) {
-            let url = `/abc/controllers/material-controller.php?status_id=${statusId}&location_id=${locationId}`;
+            let url = `/controllers/material-controller.php?status_id=${statusId}&location_id=${locationId}`;
 
             try {
                 const response = await fetch(url);

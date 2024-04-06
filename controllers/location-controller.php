@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $result = $location->create(['description' => $description]);
 
             if($result) {
-                header('Location: /abc/dashboard/settings/locations/list.php');
+                header('Location: /dashboard/settings/locations/list.php');
             }
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/settings/locations/create.php?errors=" . urlencode($serializedErrors));
+            header("Location: /dashboard/settings/locations/create.php?errors=" . urlencode($serializedErrors));
             exit();
         }
 
@@ -68,11 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
             $result = $location->update($id,$values);
 
             if($result) {
-                header('Location: /abc/dashboard/settings/locations/list.php');
+                header('Location: /dashboard/settings/locations/list.php');
             }
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/settings/locations/edit.php?id=".$id."&errors=".urlencode($serializedErrors));
+            header("Location: /dashboard/settings/locations/edit.php?id=".$id."&errors=".urlencode($serializedErrors));
             exit();
         }
 }

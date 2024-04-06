@@ -22,7 +22,7 @@
         <div class="title flex items-center justify-between">
             <h2 class="text-dark">Material Location</h2>
             <!-- <button class="action-button" id="btn-add">Add Location</button> -->
-            <a href="/abc/dashboard/materials/add-material-to-location.php?id=<?= $_GET['id'] ?>" class="action-button">Add Location</a>
+            <a href="/dashboard/materials/add-material-to-location.php?id=<?= $_GET['id'] ?>" class="action-button">Add Location</a>
         </div>
 
         <br/>
@@ -67,7 +67,7 @@
                             <td><?= $row->availability ?></td>
                             <td><?= $row->status ?></td>
                             <td>
-                                <a href="/abc/dashboard/materials/edit-material-to-location.php?material_id=<?=$data->id?>&material_location_id=<?= $row->id ?>" class="li-none">Edit</a>
+                                <a href="/dashboard/materials/edit-material-to-location.php?material_id=<?=$data->id?>&material_location_id=<?= $row->id ?>" class="li-none">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

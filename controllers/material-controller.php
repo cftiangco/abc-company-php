@@ -43,12 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $result = $material->create($values);
 
             if($result) {
-                header('Location: /abc/dashboard/materials/list.php');
+                header('Location: /dashboard/materials/list.php');
             }
 
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/materials/create.php?errors=" . urlencode($serializedErrors));
+            header("Location: /dashboard/materials/create.php?errors=" . urlencode($serializedErrors));
             exit();
         }
 }
@@ -91,11 +91,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
             $result = $material->update($id,$values);
 
             if($result) {
-                header('Location: /abc/dashboard/materials/list.php');
+                header('Location: /dashboard/materials/list.php');
             }
         } else {
             $serializedErrors = serialize($errors);
-            header("Location: /abc/dashboard/materials/edit.php?id=".$id."&errors=".urlencode($serializedErrors));
+            header("Location: /dashboard/materials/edit.php?id=".$id."&errors=".urlencode($serializedErrors));
             exit();
         }
 }

@@ -25,7 +25,7 @@
         <h2>Add Category</h2>
         <br>
 
-        <form action="/abc/controllers/category-controller.php" method="POST">
+        <form action="/controllers/category-controller.php" method="POST">
 
             <div class="field d-flex flex-col gap-3 mt-12">
                     <label>Category</label>

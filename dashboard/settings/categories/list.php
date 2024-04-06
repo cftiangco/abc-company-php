@@ -32,7 +32,7 @@
                             <td><?= $row->id ?></td>
                             <td><?= $row->description ?></td>
                             <td>
-                                <a href="/abc/dashboard/settings/categories/edit.php?id=<?= $row->id ?>" class="li-none">Edit</a>
+                                <a href="/dashboard/settings/categories/edit.php?id=<?= $row->id ?>" class="li-none">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

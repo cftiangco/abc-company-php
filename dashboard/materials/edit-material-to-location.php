@@ -44,7 +44,7 @@
         <h2>Edit Location [<?= $data->description ?>]</h2>
         <br>
 
-        <form action="/abc/controllers/material-location-controller.php?material_id=<?= $data->id ?>&material_location_id=<?= $mLocationData->id ?>" method="POST">
+        <form action="/controllers/material-location-controller.php?material_id=<?= $data->id ?>&material_location_id=<?= $mLocationData->id ?>" method="POST">
             
             <input type="hidden" name="material_id" value="<?= $data->id ?>" />
             <input type="hidden" name="id" value="<?= $mLocationData->id ?>" />

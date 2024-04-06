@@ -26,7 +26,7 @@
         <h2>Add Location</h2>
         <br>
 
-        <form action="/abc/controllers/location-controller.php" method="POST">
+        <form action="/controllers/location-controller.php" method="POST">
 
             <div class="field d-flex flex-col gap-3 mt-12">
                     <label>Description</label>
